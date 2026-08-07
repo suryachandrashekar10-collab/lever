@@ -10,6 +10,12 @@ export function AboutView() {
         is this worth doing, how much would it save, and who needs to be in the room.
       </p>
 
+      <img
+        src="/images/hero-signal.jpg"
+        alt="Scattered, unranked signals on the left resolving into an ordered, ranked column on the right"
+        className="mt-6 w-full rounded-xl border border-neutral-200 dark:border-neutral-800"
+      />
+
       <section className="mt-10">
         <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">The problem</h2>
         <p className="text-neutral-700 dark:text-neutral-300">
