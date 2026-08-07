@@ -4,6 +4,8 @@ Intake, scoring, and routing for AI and automation use cases at NavVis, so that 
 
 Built as a weekend artifact against a fixed PRD for the Associate AI Operations & Technology Specialist role, reporting to the newly created Head of AI, Data & Systems at NavVis.
 
+**Live:** https://lever-fvm0.onrender.com (Render free tier; the first request after idle can take 30-60s to wake the instance)
+
 ## Run it
 
 ```bash

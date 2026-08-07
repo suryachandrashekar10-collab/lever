@@ -32,7 +32,8 @@ Two corrections surfaced during research and are carried into the product rather
 
 Lever: a single-page React/TypeScript app with a submission form (auto-scored and tiered on submit), a sortable/filterable backlog, a live impact-vs-effort 2x2, a stalled-item view, a portfolio rollup against the PRD's own §5A targets, and an optional Groq-assisted first-pass scoring call. Seeded with 40 use cases across all 8 NavVis functions, 13 of them tied to real, cited evidence.
 
-Repo: *(this directory; a public GitHub repo and Vercel deploy are the deliberate next step, held back per plan; see open decision below)*
+Live: https://lever-fvm0.onrender.com (free tier; first request after idle takes 30-60s to wake)
+Repo: https://github.com/suryachandrashekar10-collab/lever
 Local: `npm install && npm run dev`
 
 ## 4. Weeks 1 to 4, if this were real
@@ -48,11 +49,9 @@ Local: `npm install && npm run dev`
 - **No live system integrations.** The system map is metadata (what NavVis runs, sourced and cited), not API connections. Wiring a real HubSpot OAuth flow for a weekend artifact would spend the whole weekend on plumbing nobody asked to see yet, and would need real access I don't have.
 - **No LLM-based duplicate detection.** Related-item matching is keyword Jaccard similarity plus shared systems plus shared function: instant, explainable, and good enough to catch Marie's exact problem live in testing (see below). An LLM call here would trade "instant and legible" for "slower and unauditable" without a clear win.
 - **No notification service.** The PRD's own instinct was right: visibility (a red badge, a dedicated view) is the mechanism for a first version. Building Slack/email alerting before anyone's confirmed the tool gets opened daily would be solving a problem that doesn't exist yet.
-- **Not deployed to a public URL yet.** Held back deliberately for this session. See the open decision below.
-
 ## Open decision (yours, not mine)
 
 The PRD leaves two things genuinely undecided, and I've resolved one and left one for you:
 
 - **Resolved:** the 13 evidenced items aren't in a separate "prepared for you" section. They're ordinary backlog records with a confidence badge, filterable via "Confirmed only" in the backlog view. A special showcase section would've meant an empty-feeling regular view; filtering the real thing felt more honest to what a v0 tool should look like.
-- **Open:** whether the deployed link goes in the application itself, or gets held for the screening call. I'd lean toward holding it (a live link invites Tobias to poke at v0 assumptions before you're in the room to explain the tradeoffs), but that's your call to make, not mine.
+- **Open:** it's deployed now, so the question is just timing: whether the link goes in the application itself, or gets held for the screening call. I'd lean toward holding it (a live link invites Tobias to poke at v0 assumptions before you're in the room to explain the tradeoffs), but that's your call to make, not mine.
