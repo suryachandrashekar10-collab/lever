@@ -15,13 +15,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Shell />}>
-            <Route path="/" element={<BacklogView />} />
+            <Route path="/" element={<AboutView />} />
+            <Route path="/backlog" element={<BacklogView />} />
             <Route path="/use-cases/:id" element={<DetailView />} />
             <Route path="/submit" element={<SubmitForm />} />
             <Route path="/stalled" element={<StalledView />} />
             <Route path="/portfolio" element={<PortfolioView />} />
             <Route path="/matrix" element={<MatrixView />} />
-            <Route path="/about" element={<AboutView />} />
           </Route>
         </Routes>
       </BrowserRouter>

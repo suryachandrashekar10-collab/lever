@@ -79,7 +79,7 @@ Hours saved per month (submitter estimate): ${input.hoursSavedMonthly}`;
     throw new Error(`Groq request failed (${res.status}): ${text.slice(0, 300)}`);
   }
 
-  const data = await res.json();
+  const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
   const content: string = data?.choices?.[0]?.message?.content ?? "{}";
   let parsed: { impact?: Record<string, unknown>; effort?: Record<string, unknown> };
   try {

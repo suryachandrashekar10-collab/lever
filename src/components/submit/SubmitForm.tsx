@@ -41,7 +41,7 @@ export function SubmitForm() {
 
   return (
     <div className="mx-auto max-w-xl">
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">05 / Submit</p>
+      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">06 / Submit</p>
       <h1 className="mb-1 text-2xl font-semibold tracking-tight">Submit a use case</h1>
       <p className="mb-6 text-sm text-neutral-500">
         Plain language, under a minute. No taxonomy required: Lever scores and routes it for you.

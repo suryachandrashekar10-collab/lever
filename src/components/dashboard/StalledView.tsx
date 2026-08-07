@@ -17,7 +17,7 @@ export function StalledView() {
 
   return (
     <div>
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">03 / Stalled</p>
+      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">04 / Stalled</p>
       <h1 className="mb-1 text-2xl font-semibold tracking-tight">Stalled</h1>
       <p className="mb-6 text-sm text-neutral-500">
         Items sitting in Triaged, Scoped, or In Build with no state change in 14+ days. No notifications in v0:

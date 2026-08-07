@@ -6,12 +6,12 @@ import { useTheme } from "../../lib/useTheme";
 import { BLENDED_HOURLY_RATE_EUR, DAILY_BUILD_RATE_EUR, STALL_THRESHOLD_DAYS } from "../../lib/constants";
 
 const navItems = [
-  { to: "/", label: "Backlog", end: true },
+  { to: "/", label: "About", end: true },
+  { to: "/backlog", label: "Backlog" },
   { to: "/matrix", label: "2x2" },
   { to: "/stalled", label: "Stalled" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/submit", label: "Submit" },
-  { to: "/about", label: "About" },
 ];
 
 export function Shell() {

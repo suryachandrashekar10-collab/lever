@@ -70,7 +70,7 @@ export function BacklogView() {
     <div>
       <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">01 / Backlog</p>
+          <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">02 / Backlog</p>
           <h1 className="text-2xl font-semibold tracking-tight">Ranked intake</h1>
           <p className="mt-1 text-sm text-neutral-500">
             Leverage = (impact total ÷ effort total) × 10. Tier is derived live from impact ≥ {IMPACT_THRESHOLD}{" "}

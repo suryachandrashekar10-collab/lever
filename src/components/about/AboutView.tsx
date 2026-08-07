@@ -3,21 +3,51 @@ import { Link } from "react-router-dom";
 export function AboutView() {
   return (
     <div className="mx-auto max-w-2xl">
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">06 / About</p>
-      <h1 className="text-2xl font-semibold tracking-tight">What is Lever, and why does it exist?</h1>
-      <p className="mt-3 text-lg text-neutral-700 dark:text-neutral-300">
-        Lever is a place to put an idea for an AI or automation project, and get back an honest answer:
-        is this worth doing, how much would it save, and who needs to be in the room.
-      </p>
+      <section className="relative -mx-6 -mt-6 overflow-hidden rounded-b-2xl px-6 pb-12 pt-10 sm:-mx-8 sm:px-8">
+        <div className="absolute inset-0 -z-10">
+          <img
+            src="/images/hero-signal.jpg"
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full scale-110 object-cover opacity-25 blur-sm dark:opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/90 to-neutral-50 dark:from-neutral-950/70 dark:via-neutral-950/90 dark:to-neutral-950" />
+        </div>
 
-      <img
-        src="/images/hero-signal.jpg"
-        alt="Scattered, unranked signals on the left resolving into an ordered, ranked column on the right"
-        className="mt-6 w-full rounded-xl border border-neutral-200 dark:border-neutral-800"
-      />
+        <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">01 / About</p>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          Hello NavVis team, I'm Surya, and I'm genuinely glad you're here.
+        </h1>
+        <p className="mt-3 text-lg text-neutral-700 dark:text-neutral-300">
+          This is Lever: an intake, scoring, and routing tool for AI and automation ideas, built as my
+          application for the Associate AI Operations & Technology Specialist role.
+        </p>
+      </section>
 
       <section className="mt-10">
-        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">The problem</h2>
+        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">Why I built this</h2>
+        <p className="text-neutral-700 dark:text-neutral-300">
+          I read the job description twice, then went looking for evidence of what it actually implied. The
+          role exists to spot where AI and automation create leverage, and to unblock stalled projects. That
+          phrasing only makes sense if there's currently no shared place where those ideas get collected,
+          scored, and tracked. So I went and checked.
+        </p>
+        <p className="mt-3 text-neutral-700 dark:text-neutral-300">
+          What I found, from live job postings and public employee reviews, not guesses: Revenue Ops is
+          being asked to redesign lead handoffs by hand. Marketing is deduplicating HubSpot leads manually
+          ahead of INTERGEO. Finance reviews and approves invoices one at a time. Recurring reviews mention
+          "ineffective communication" and unclear ownership across teams. None of it was hard to find. It was
+          just never in one place, scored the same way, so nobody could act on it as a set.
+        </p>
+        <p className="mt-3 text-neutral-700 dark:text-neutral-300">
+          So instead of only writing about that gap, I built the thing that closes it, and seeded it with 13
+          of those real, cited findings alongside 27 plausible ones, so the first screen you open already
+          looks like a credible first draft of your own backlog.
+        </p>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">The problem, plainly</h2>
         <p className="text-neutral-700 dark:text-neutral-300">
           Most companies have dozens of small, painful, manual processes. Somebody re-types the same data
           into two systems every week. Somebody spends a day a month reconciling a spreadsheet by hand.
@@ -30,16 +60,13 @@ export function AboutView() {
       </section>
 
       <section className="mt-10 rounded-xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-neutral-400">Meet Marie</h2>
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-neutral-400">What I built, and how it works</h2>
         <p className="text-neutral-700 dark:text-neutral-300">
-          Marie works in Revenue Operations. Every month she spends most of a day cross-checking deal
+          Meet Marie, from Revenue Operations. Every month she spends most of a day cross-checking deal
           registrations that partners email in, half of them as PDFs, against what's actually in HubSpot.
           She already tried fixing it herself by pasting the PDFs into an LLM one at a time. It worked,
-          but only for her, and only that month.
-        </p>
-        <p className="mt-3 text-neutral-700 dark:text-neutral-300">
-          Marie didn't know who to tell, or whether it was even worth telling anyone. So she typed it into
-          Lever instead:
+          but only for her, and only that month. She didn't know who to tell, or whether it was even worth
+          telling anyone. So she typed it into Lever instead:
         </p>
         <ol className="mt-4 space-y-3 text-sm text-neutral-700 dark:text-neutral-300">
           <li className="flex gap-3">
@@ -68,7 +95,7 @@ export function AboutView() {
       </section>
 
       <section className="mt-10">
-        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-400">How it works</h2>
+        <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-neutral-400">The loop, in short</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {[
             ["Submit", "Plain language, six fields, under a minute."],
@@ -81,6 +108,26 @@ export function AboutView() {
               <p className="mt-1 text-xs text-neutral-500">{desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-10 rounded-xl border border-neutral-200 p-6 dark:border-neutral-800">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-neutral-400">Who built this</h2>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <div
+            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-neutral-100 text-lg font-semibold text-neutral-500 dark:border-neutral-800 dark:bg-neutral-800 dark:text-neutral-400"
+            aria-hidden="true"
+          >
+            SC
+          </div>
+          <div>
+            <p className="font-semibold">Surya Chandrashekara</p>
+            <p className="text-sm text-neutral-500">[ your current role / degree, one line ]</p>
+            <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
+              [ two or three sentences: what you've built before, why this role and NavVis specifically,
+              and what you'd want to be true about the first month if you got it. ]
+            </p>
+          </div>
         </div>
       </section>
 
@@ -101,7 +148,7 @@ export function AboutView() {
           Submit your own
         </Link>
         <Link
-          to="/"
+          to="/backlog"
           className="rounded-md border border-neutral-300 px-4 py-2.5 text-sm font-semibold hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
         >
           Browse the backlog

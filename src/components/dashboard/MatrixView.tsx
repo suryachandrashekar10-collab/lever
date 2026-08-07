@@ -34,7 +34,7 @@ export function MatrixView() {
 
   return (
     <div>
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">02 / Matrix</p>
+      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">03 / Matrix</p>
       <h1 className="mb-1 text-2xl font-semibold tracking-tight">Impact vs. effort</h1>
       <p className="mb-6 text-sm text-neutral-500">
         Every active use case, positioned by its scored totals. Quadrant lines mark the tiering thresholds from the

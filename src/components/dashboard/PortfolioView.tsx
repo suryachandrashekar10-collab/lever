@@ -59,7 +59,7 @@ export function PortfolioView() {
 
   return (
     <div>
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">04 / Portfolio</p>
+      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">05 / Portfolio</p>
       <h1 className="mb-1 text-2xl font-semibold tracking-tight">Portfolio</h1>
       <p className="mb-6 text-sm text-neutral-500">One number for the CEO, and the metrics behind it.</p>
 

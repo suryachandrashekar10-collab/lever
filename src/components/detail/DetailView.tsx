@@ -31,7 +31,7 @@ export function DetailView() {
   if (!uc) {
     return (
       <div className="rounded-lg border border-dashed border-neutral-300 p-8 text-center text-neutral-500 dark:border-neutral-700">
-        Use case {id} not found. <Link to="/" className="underline">Back to backlog</Link>
+        Use case {id} not found. <Link to="/backlog" className="underline">Back to backlog</Link>
       </div>
     );
   }
