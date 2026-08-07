@@ -111,26 +111,6 @@ export function AboutView() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-xl border border-neutral-200 p-6 dark:border-neutral-800">
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-neutral-400">Who built this</h2>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-          <div
-            className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-neutral-100 text-lg font-semibold text-neutral-500 dark:border-neutral-800 dark:bg-neutral-800 dark:text-neutral-400"
-            aria-hidden="true"
-          >
-            SC
-          </div>
-          <div>
-            <p className="font-semibold">Surya Chandrashekara</p>
-            <p className="text-sm text-neutral-500">[ your current role / degree, one line ]</p>
-            <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">
-              [ two or three sentences: what you've built before, why this role and NavVis specifically,
-              and what you'd want to be true about the first month if you got it. ]
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="mt-10">
         <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">Who it's for</h2>
         <p className="text-neutral-700 dark:text-neutral-300">
