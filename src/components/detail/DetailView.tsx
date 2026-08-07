@@ -23,7 +23,8 @@ export function DetailView() {
     const direct = uc.relatedIds
       .map((rid) => useCases.find((u) => u.id === rid))
       .filter((u): u is NonNullable<typeof u> => !!u);
-    const suggested = findRelated(uc, useCases, uc.id).filter((m) => !uc.relatedIds.includes(m.useCaseId));
+    const suggested =
+      uc.state === "Merged" ? [] : findRelated(uc, useCases, uc.id).filter((m) => !uc.relatedIds.includes(m.useCaseId));
     return { direct, suggested };
   }, [uc, useCases]);
 
@@ -138,7 +139,7 @@ export function DetailView() {
                   <span className="font-mono text-xs text-neutral-500">{r.id}</span> {r.title}{" "}
                   <span className="text-neutral-400">({r.submitterFunction})</span>
                 </Link>
-                {r.state !== "Merged" && (
+                {uc.state !== "Merged" && r.state !== "Merged" && (
                   <button
                     onClick={() => mergeInto(r.id, uc.id)}
                     className="whitespace-nowrap rounded border border-amber-300 px-2 py-0.5 text-xs text-amber-800 hover:bg-amber-100 dark:border-amber-800 dark:text-amber-300 dark:hover:bg-amber-900/40"

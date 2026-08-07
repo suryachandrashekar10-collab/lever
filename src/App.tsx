@@ -7,6 +7,7 @@ import { SubmitForm } from "./components/submit/SubmitForm";
 import { StalledView } from "./components/dashboard/StalledView";
 import { PortfolioView } from "./components/dashboard/PortfolioView";
 import { MatrixView } from "./components/dashboard/MatrixView";
+import { AboutView } from "./components/about/AboutView";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/stalled" element={<StalledView />} />
             <Route path="/portfolio" element={<PortfolioView />} />
             <Route path="/matrix" element={<MatrixView />} />
+            <Route path="/about" element={<AboutView />} />
           </Route>
         </Routes>
       </BrowserRouter>

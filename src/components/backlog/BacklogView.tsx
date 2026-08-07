@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useLeverStore } from "../../store/LeverStore";
 import { deriveAll } from "../../lib/derived";
 import { daysSince } from "../../lib/stall";
+import { IMPACT_THRESHOLD, EFFORT_THRESHOLD } from "../../lib/constants";
 import { ALL_FUNCTIONS, type Confidence, type Function8, type UseCaseState } from "../../types";
 import { SYSTEMS } from "../../data/systems";
 import { TierBadge, StateBadge, StalledBadge, ConfidenceBadge } from "../ui/Badges";
+import { MiniBar } from "../ui/MiniBar";
 
 type SortKey = "leverage" | "value" | "age" | "state";
 
@@ -66,14 +68,24 @@ export function BacklogView() {
 
   return (
     <div>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold">Backlog</h1>
-          <p className="text-sm text-neutral-500">
-            {rows.length} of {useCases.length} use cases
+          <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">01 / Backlog</p>
+          <h1 className="text-2xl font-semibold tracking-tight">Ranked intake</h1>
+          <p className="mt-1 text-sm text-neutral-500">
+            Leverage = (impact total ÷ effort total) × 10. Tier is derived live from impact ≥ {IMPACT_THRESHOLD}{" "}
+            and effort ≤ {EFFORT_THRESHOLD}, never hand-set. {rows.length} of {useCases.length} use cases shown.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <button
+          onClick={() => navigate("/submit")}
+          className="shrink-0 rounded-md bg-neutral-900 px-3.5 py-2 text-sm font-semibold text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+        >
+          + Submit use case
+        </button>
+      </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-2">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -125,7 +137,6 @@ export function BacklogView() {
             <option value="age">Sort: Age</option>
             <option value="state">Sort: State</option>
           </select>
-        </div>
       </div>
 
       <div className="overflow-x-auto rounded-lg border border-neutral-200 dark:border-neutral-800">
@@ -137,6 +148,8 @@ export function BacklogView() {
               <th className="px-3 py-2">Function</th>
               <th className="px-3 py-2">Tier</th>
               <th className="px-3 py-2 text-right">Leverage</th>
+              <th className="px-3 py-2">Impact</th>
+              <th className="px-3 py-2">Effort</th>
               <th className="px-3 py-2 text-right">Net €/mo</th>
               <th className="px-3 py-2 text-right">Age</th>
               <th className="px-3 py-2">State</th>
@@ -157,6 +170,12 @@ export function BacklogView() {
                   <TierBadge tier={d.tier} />
                 </td>
                 <td className="px-3 py-2 text-right font-mono">{d.leverageScore.toFixed(1)}</td>
+                <td className="px-3 py-2">
+                  <MiniBar value={d.impactTotal} color="#3b82f6" />
+                </td>
+                <td className="px-3 py-2">
+                  <MiniBar value={d.effortTotal} color="#f59e0b" />
+                </td>
                 <td className="px-3 py-2 text-right font-mono">
                   {d.netMonthlyEur >= 0 ? "+" : ""}
                   {Math.round(d.netMonthlyEur).toLocaleString()}
@@ -175,7 +194,7 @@ export function BacklogView() {
             ))}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={9} className="px-3 py-8 text-center text-neutral-400">
+                <td colSpan={11} className="px-3 py-8 text-center text-neutral-400">
                   No use cases match these filters.
                 </td>
               </tr>

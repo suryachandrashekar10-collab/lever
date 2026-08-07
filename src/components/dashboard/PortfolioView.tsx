@@ -59,7 +59,8 @@ export function PortfolioView() {
 
   return (
     <div>
-      <h1 className="mb-1 text-xl font-semibold">Portfolio</h1>
+      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">04 / Portfolio</p>
+      <h1 className="mb-1 text-2xl font-semibold tracking-tight">Portfolio</h1>
       <p className="mb-6 text-sm text-neutral-500">One number for the CEO, and the metrics behind it.</p>
 
       <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
