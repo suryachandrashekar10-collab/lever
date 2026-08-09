@@ -196,7 +196,7 @@ export function DetailView() {
               <button
                 key={s}
                 onClick={() => advance(s)}
-                className="rounded-md bg-neutral-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+                className="rounded-full bg-brand-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-600"
               >
                 Advance to {s}
               </button>

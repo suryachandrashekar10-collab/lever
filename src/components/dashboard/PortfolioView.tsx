@@ -1,8 +1,11 @@
 import { useMemo } from "react";
+import { BarChart3 } from "lucide-react";
 import { useLeverStore } from "../../store/LeverStore";
 import { deriveAll } from "../../lib/derived";
 import { medianTimeToTriage, medianTier1CycleTime } from "../../lib/cycleTime";
+import { BLENDED_HOURLY_RATE_EUR, DAILY_BUILD_RATE_EUR, STALL_THRESHOLD_DAYS } from "../../lib/constants";
 import { ALL_FUNCTIONS, type UseCaseState } from "../../types";
+import { PageHeader, HeaderBadge } from "../ui/PageHeader";
 
 const STATE_ORDER: UseCaseState[] = [
   "Submitted",
@@ -29,6 +32,7 @@ export function PortfolioView() {
 
     const stateCounts = new Map<UseCaseState, number>();
     for (const { uc } of derived) stateCounts.set(uc.state, (stateCounts.get(uc.state) ?? 0) + 1);
+    const maxStateCount = Math.max(...STATE_ORDER.map((s) => stateCounts.get(s) ?? 0), 1);
 
     const stalledCount = derived.filter(({ d }) => d.isStalled).length;
     const activeCount = derived.filter((d) => d.uc.state !== "Merged" && d.uc.state !== "Rejected").length;
@@ -46,6 +50,7 @@ export function PortfolioView() {
       totalSpend,
       totalValue,
       stateCounts,
+      maxStateCount,
       stalledCount,
       activeCount,
       functionsSubmitting,
@@ -59,30 +64,48 @@ export function PortfolioView() {
 
   return (
     <div>
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">05 / Portfolio</p>
-      <h1 className="mb-1 text-2xl font-semibold tracking-tight">Portfolio</h1>
-      <p className="mb-6 text-sm text-neutral-500">One number for the CEO, and the metrics behind it.</p>
+      <PageHeader
+        eyebrow="Portfolio"
+        icon={<BarChart3 className="h-5 w-5" strokeWidth={2} />}
+        iconColor="bg-emerald-600"
+        title="One number for the CEO"
+        description="Net value shipped and measured to date, and the metrics behind it."
+        badge={
+          <HeaderBadge>
+            rate €{BLENDED_HOURLY_RATE_EUR}/h &middot; build €{DAILY_BUILD_RATE_EUR}/day &middot; stall {STALL_THRESHOLD_DAYS}d
+          </HeaderBadge>
+        }
+      />
 
-      <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
         <BigStat label="Net value / month" value={`€${Math.round(stats.totalNet).toLocaleString()}`} accent />
         <BigStat label="Gross value / month" value={`€${Math.round(stats.totalValue).toLocaleString()}`} />
         <BigStat label="AI tool + token spend" value={`€${Math.round(stats.totalSpend).toLocaleString()}`} />
         <BigStat label="Stalled" value={String(stats.stalledCount)} warn={stats.stalledCount > 0} />
       </div>
 
-      <div className="mb-8 rounded-lg border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
-        <h2 className="mb-3 text-sm font-semibold text-neutral-500">By state</h2>
-        <div className="flex flex-wrap gap-4">
-          {STATE_ORDER.map((s) => (
-            <div key={s} className="text-center">
-              <p className="text-2xl font-semibold tabular-nums">{stats.stateCounts.get(s) ?? 0}</p>
-              <p className="text-xs text-neutral-500">{s}</p>
-            </div>
-          ))}
+      <div className="mb-6 rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <h2 className="mb-4 text-sm font-semibold text-neutral-500">By state</h2>
+        <div className="space-y-2.5">
+          {STATE_ORDER.map((s) => {
+            const count = stats.stateCounts.get(s) ?? 0;
+            return (
+              <div key={s} className="flex items-center gap-3">
+                <span className="w-20 shrink-0 text-xs text-neutral-500">{s}</span>
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-800">
+                  <div
+                    className="h-full rounded-full bg-brand-500"
+                    style={{ width: `${(count / stats.maxStateCount) * 100}%` }}
+                  />
+                </div>
+                <span className="w-6 shrink-0 text-right font-mono text-xs tabular-nums text-neutral-500">{count}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <div className="rounded-lg border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+      <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
         <h2 className="mb-3 text-sm font-semibold text-neutral-500">Product metrics (PRD §5A, live)</h2>
         <table className="w-full text-sm">
           <thead className="text-left text-xs uppercase text-neutral-400">
@@ -145,7 +168,7 @@ export function PortfolioView() {
 
 function BigStat({ label, value, accent, warn }: { label: string; value: string; accent?: boolean; warn?: boolean }) {
   return (
-    <div className="rounded-lg border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+    <div className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
       <p className="text-xs text-neutral-500">{label}</p>
       <p
         className={`text-2xl font-semibold tabular-nums ${

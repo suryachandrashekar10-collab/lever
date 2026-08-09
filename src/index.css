@@ -2,6 +2,22 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  /* NavVis-inspired brand palette: near-black chrome, saturated blue accent */
+  --color-brand-950: #05070d;
+  --color-brand-900: #0b0e1a;
+  --color-brand-800: #131829;
+  --color-brand-700: #1c2338;
+  --color-brand-600: #2952e3;
+  --color-brand-500: #2f5bff;
+  --color-brand-400: #5c7dff;
+  --color-brand-100: #e6ebff;
+  --color-brand-50: #f3f5ff;
+
+  /* Warm off-white page background, matching MarineIQ's cream tone */
+  --color-page: #f6f5f0;
+}
+
 :root {
   color-scheme: light;
 }

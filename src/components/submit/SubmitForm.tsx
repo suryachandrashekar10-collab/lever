@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PlusCircle } from "lucide-react";
 import { useLeverStore } from "../../store/LeverStore";
 import { findRelated } from "../../lib/related";
 import { ALL_FREQUENCIES, ALL_FUNCTIONS, type Frequency, type Function8 } from "../../types";
+import { PageHeader } from "../ui/PageHeader";
 
 export function SubmitForm() {
   const { useCases, addUseCase } = useLeverStore();
@@ -41,13 +43,15 @@ export function SubmitForm() {
 
   return (
     <div className="mx-auto max-w-xl">
-      <p className="mb-1 font-mono text-xs uppercase tracking-wider text-neutral-400">06 / Submit</p>
-      <h1 className="mb-1 text-2xl font-semibold tracking-tight">Submit a use case</h1>
-      <p className="mb-6 text-sm text-neutral-500">
-        Plain language, under a minute. No taxonomy required: Lever scores and routes it for you.
-      </p>
+      <PageHeader
+        eyebrow="Submit"
+        icon={<PlusCircle className="h-5 w-5" strokeWidth={2} />}
+        iconColor="bg-brand-500"
+        title="Submit a use case"
+        description="Plain language, under a minute. No taxonomy required: Lever scores and routes it for you."
+      />
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
         <Field label="What's the problem, in one line?">
           <input
             value={title}
@@ -152,7 +156,7 @@ export function SubmitForm() {
         <button
           type="submit"
           disabled={!canSubmit}
-          className="w-full rounded-md bg-neutral-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-neutral-700 disabled:opacity-40 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+          className="w-full rounded-full bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-600 disabled:opacity-40"
         >
           Submit, see your score instantly
         </button>
