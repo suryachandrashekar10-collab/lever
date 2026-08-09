@@ -6,7 +6,7 @@ export function AboutView() {
       <section className="relative -mx-6 -mt-6 overflow-hidden rounded-b-2xl px-6 pb-12 pt-10 sm:-mx-8 sm:px-8">
         <div className="absolute inset-0 -z-10">
           <img
-            src="/images/hero-signal.jpg"
+            src="/images/hero-handshake.jpg"
             alt=""
             aria-hidden="true"
             className="h-full w-full scale-110 object-cover opacity-25 blur-sm dark:opacity-10"
@@ -108,6 +108,18 @@ export function AboutView() {
               <p className="mt-1 text-xs text-neutral-500">{desc}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-10 flex items-center gap-4">
+        <img
+          src="/images/persona.jpg"
+          alt="Surya Chandrashekara"
+          className="h-16 w-16 shrink-0 rounded-full border border-neutral-200 object-cover dark:border-neutral-800"
+        />
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">Who built this</p>
+          <p className="font-semibold">Surya Chandrashekara</p>
         </div>
       </section>
 
