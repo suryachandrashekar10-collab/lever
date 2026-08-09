@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Mail } from "lucide-react";
 
 export function AboutView() {
   return (
@@ -119,6 +120,13 @@ export function AboutView() {
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">Who built this</p>
             <p className="font-semibold">Surya Chandrashekara</p>
+            <a
+              href="mailto:surya.chandrashekar10@gmail.com"
+              className="mt-0.5 inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-brand-500"
+            >
+              <Mail className="h-3.5 w-3.5" strokeWidth={2} />
+              surya.chandrashekar10@gmail.com
+            </a>
           </div>
         </section>
 
